@@ -1,4 +1,4 @@
-name: F1 Web Test
+name: F1 Web Engine
 
 on:
   workflow_dispatch:
@@ -18,11 +18,13 @@ jobs:
         with:
           python-version: "3.10"
 
+      - run: pip install requests
+
       - run: python bot.py
 
       - run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add index.html
-          git commit -m "Update page [skip ci]" || echo "No changes"
+          git commit -m "Update dashboard [skip ci]" || echo "No changes"
           git push
